@@ -1,0 +1,102 @@
+FORMAT: 1A
+HOST: http://api.myurl.azov.company/
+
+# myUrl
+
+myUrl is an API with links.
+
+## Links [/link]
+
+### List all Links [GET /link/list]
+
+List of all the user's links.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1,
+                "url": "http://test.com/test1",
+                "title": "Test 1",
+                "description": "Test 1 desc",
+                "published_at": "2018-06-20T08:40:51.620Z",
+                "tags": [
+                    "test",
+                    "need",
+                    "interesting"
+                ]
+            }
+        ]
+        
+### Get the Link by ID [GET /link/show/{id}]
+
+A single Link object with all its details
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the Link to perform action with. Has example value.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1,
+                "url": "http://test.com/test1",
+                "title": "Test 1",
+                "description": "Test 1 desc",
+                "published_at": "2018-06-20T08:40:51.620Z",
+                "tags": [
+                    "test",
+                    "need",
+                    "interesting"
+                ]
+            }
+        ]
+
+### Create a new Link [POST /link/add]
+
+You may create your own link using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        {
+            "url": "http://test.com/test1",
+            "title": "Test 1",
+            "description": "Test 1 desc",
+            "tags": [
+                "test",
+                "need",
+                "interesting"
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /link/show/1
+
+    + Body
+
+            {
+                "id": 1,
+                "url": "http://test.com/test1",
+                "title": "Test 1",
+                "description": "Test 1 desc",
+                "published_at": "2018-06-20T08:40:51.620Z",
+                "tags": [
+                    "test",
+                    "need",
+                    "interesting"
+                ]
+            }
+
+### Remove the Link by ID [POST /link/remove/{id}]
+
+Remove the Link object.
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the Link to perform action with. Has example value.
+
++ Response 204
